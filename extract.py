@@ -68,5 +68,39 @@ def extract_user_id():
         exit()
 
 
+class Extract():
+    def __init__(self):
+        self.bot = instaloader.Instaloader()
+
+    def extract_user(self):
+        Username = input('Enter the Account Username: ')
+        self.bot.download_profile(Username, profile_pic_only=True)
+        profile = instaloader.Profile.from_username(self.bot.context, Username)
+        posts = profile.get_posts()
+        try:
+            for index, post in enumerate(posts, 1):
+                self.bot.download_post(post, target=f"{profile.username}_{index}")
+        except:
+            exit()
+
+    def extract_user_id(self):
+        USERID = input('Enter the Account User ID: ')
+        Username = instaloader.Profile.from_id(self.bot.context, USERID).username
+        profile = instaloader.Profile.from_username(self.bot.context, Username)
+        posts = profile.get_posts()
+        try:
+            for index, post in enumerate(posts, 1):
+                self.bot.download_post(post, target=f"{profile.username}_{index}")
+        except:
+            exit()
+
+    def extract_hashtag(self):
+        HASHTAG = input('Enter the Hashtag: ')
+        hashtag = Hashtag.from_name(self.bot.context, HASHTAG)
+        for post in hashtag.get_posts():
+            self.bot.download_post(post, target="#" + hashtag.name)
+
+
 if __name__ == "__main__":
-    extract_user_id()
+    test = Extract()
+    test.extract_user_id()

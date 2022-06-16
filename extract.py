@@ -40,8 +40,6 @@ def extract_user_id():
     # L.interactive_login(USER)  # (ask password on terminal)
     # L.load_session_from_file(USER)  # (load session created w/
 
-
-
     Username = instaloader.Profile.from_id(L.context, USERID).username
     profile = instaloader.Profile.from_username(L.context, Username)
     posts = profile.get_posts()
@@ -53,4 +51,4 @@ def extract_user_id():
 
 
 if __name__ == "__main__":
-    extract_user_id()
+    extract_hashtag()

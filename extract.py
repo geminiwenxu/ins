@@ -42,8 +42,7 @@ def extract_hashtag():
         bot.download_post(post, target="#" + hashtag.name)
 
 
-def extract_user():
-    Username = input('Enter the Account Username: ')
+def extract_user(Username):
     bot = instaloader.Instaloader()
     bot.download_profile(Username, profile_pic_only=True)
     profile = instaloader.Profile.from_username(bot.context, Username)
@@ -103,4 +102,4 @@ class Extract():
 
 if __name__ == "__main__":
     test = Extract()
-    test.extract_user_id()
+    test.extract_user()

@@ -121,15 +121,10 @@ class InsPost():
         :return dict object of Ins class '''
         return self.__dict__
 
-    # def save_json(self, json_name, ls):
-    #     '''dump dict into json file'''
-    #     with open(json_name+'.json', 'w') as fp:
-    #         json.dump(ls, fp)
-
 
 if __name__ == "__main__":
     hashtag_ls = []
-    files = glob.glob('/Users/geminiwenxu/PycharmProjects/Ins/hashtag/#cat/*.json.xz')
+    files = glob.glob('/Users/geminiwenxu/PycharmProjects/Ins/hashtag/*/*.json.xz')
     for file in files:
         with lzma.open(file, "r") as f:
             data = f.read()
@@ -137,32 +132,32 @@ if __name__ == "__main__":
             inshashtag = InsHashtag.hashtag_from_json(json_obj)
             hash_dict = inshashtag.to_document()
             hashtag_ls.append(hash_dict)
-    with open('hashtag_cat.json', 'w') as fp:
+    with open('hashtag.json', 'w') as fp:
         json.dump(hashtag_ls, fp)
+    #
+    # profile_ls = []
+    # files = glob.glob('/Users/geminiwenxu/PycharmProjects/Ins/profile/*/*.json.xz')
+    # for file in files:
+    #     with lzma.open(file, "r") as f:
+    #         data = f.read()
+    #         json_obj = json.loads(data.decode('utf-8'))
+    #         insprofile = InsProfile.profile_from_json(json_obj)
+    #         profile_dict = insprofile.to_document()
+    #         profile_ls.append(profile_dict)
+    # with open('profile.json', 'w') as fp:
+    #     json.dump(profile_ls, fp)
 
-    profile_ls = []
-    files = glob.glob('/Users/geminiwenxu/PycharmProjects/Ins/profile/*/*.json.xz')
-    for file in files:
-        with lzma.open(file, "r") as f:
-            data = f.read()
-            json_obj = json.loads(data.decode('utf-8'))
-            insprofile = InsProfile.profile_from_json(json_obj)
-            profile_dict = insprofile.to_document()
-            profile_ls.append(profile_dict)
-    with open('profile.json', 'w') as fp:
-        json.dump(profile_ls, fp)
-
-    post_ls = []
-    files = glob.glob('/Users/geminiwenxu/PycharmProjects/Ins/post/selenagomez_*/*.json.xz')
-    for file in files:
-        with lzma.open(file, "r") as f:
-            data = f.read()
-            json_obj = json.loads(data.decode('utf-8'))
-            inspost = InsPost.post_from_json(json_obj)
-            post_dict = inspost.to_document()
-            post_ls.append(post_dict)
-    with open('selena_post.json', 'w') as fp:
-        json.dump(post_ls, fp)
+    # post_ls = []
+    # files = glob.glob('/Users/geminiwenxu/PycharmProjects/Ins/post/geeks_for_geeks_*/*.json.xz')
+    # for file in files:
+    #     with lzma.open(file, "r") as f:
+    #         data = f.read()
+    #         json_obj = json.loads(data.decode('utf-8'))
+    #         inspost = InsPost.post_from_json(json_obj)
+    #         post_dict = inspost.to_document()
+    #         post_ls.append(post_dict)
+    # with open('geeks_for_geeks_post.json', 'w') as fp:
+    #     json.dump(post_ls, fp)
 
     file = '/Users/geminiwenxu/PycharmProjects/Ins/post/selenagomez_1/2022-05-12_13-45-50_UTC.json.xz'
     with lzma.open(file, "r") as f:

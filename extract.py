@@ -34,8 +34,7 @@ def extract_hastag_date():
         no_of_downloads += 1
 
 
-def extract_hashtag():
-    HASHTAG = input('Enter the Hashtag: ')
+def extract_hashtag(HASHTAG):
     bot = instaloader.Instaloader()
     hashtag = Hashtag.from_name(bot.context, HASHTAG)
     for post in hashtag.get_posts():
@@ -50,8 +49,9 @@ def extract_user(Username):
     try:
         for index, post in enumerate(posts, 1):
             bot.download_post(post, target=f"{profile.username}_{index}")
-    except:
-        exit()
+    except Exception as ex:
+        # exit() #### modify here
+        print(f"error happens here {ex}")
 
 
 def extract_user_id():
@@ -63,8 +63,8 @@ def extract_user_id():
     try:
         for index, post in enumerate(posts, 1):
             bot.download_post(post, target=f"{profile.username}_{index}")
-    except:
-        exit()
+    except Exception as ex:
+        print(f"error happens here {ex}")
 
 
 class Extract():
@@ -79,8 +79,8 @@ class Extract():
         try:
             for index, post in enumerate(posts, 1):
                 self.bot.download_post(post, target=f"{profile.username}_{index}")
-        except:
-            exit()
+        except Exception as ex:
+            print(f"error happens here {ex}")
 
     def extract_user_id(self):
         USERID = input('Enter the Account User ID: ')
@@ -90,8 +90,8 @@ class Extract():
         try:
             for index, post in enumerate(posts, 1):
                 self.bot.download_post(post, target=f"{profile.username}_{index}")
-        except:
-            exit()
+        except Exception as ex:
+            print(f"error happens here {ex}")
 
     def extract_hashtag(self):
         HASHTAG = input('Enter the Hashtag: ')

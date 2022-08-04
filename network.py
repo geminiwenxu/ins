@@ -43,7 +43,7 @@ if __name__ == "__main__":
         for i in data:
             user_name = i['user_name']
             print(user_name)
-        print('which user post caption you would like to see?')
+        print('which user post caption you would like to see? or enter no to explore new user')
         answer = input()
         name = answer
         if any(answer in s for s in user_ls):
@@ -105,7 +105,9 @@ if __name__ == "__main__":
         else:
             print("enter the user you want to explore")
             Username = input()
-            extract_user(Username)  # but once extract user, program stops !!!!!!!!!
+            extract_user(Username)
+            move(Username)
+            user_ls.extend(Username)
 
     else:
         print('do you want to explore the existing hashtag?')
